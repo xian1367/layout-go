@@ -1,0 +1,27 @@
+package {{PackageName}}
+
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/xian137/layout-go/database/model/scope"
+	"github.com/xian137/layout-go/pkg/database"
+)
+
+func Get(id interface{}) ({{VariableName}} {{StructName}}) {
+    database.DB.Where("id = ?", id).First(&{{VariableName}})
+    return
+}
+
+func All() ({{VariableNamePlural}} []{{StructName}}) {
+    database.DB.Find(&{{VariableNamePlural}})
+    return
+}
+
+func Paginate(c *gin.Context) ({{VariableNamePlural}} []{{StructName}}, paging scope.Paging) {
+	paging = scope.Paginate(
+		c,
+		database.DB.Model({{StructName}}{}),
+		&{{VariableNamePlural}},
+		{{StructName}}{},
+	)
+	return
+}

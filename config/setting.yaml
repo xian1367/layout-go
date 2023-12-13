@@ -1,0 +1,63 @@
+app:
+  #应用名称
+  name: "app"
+  #是否进入调试模式
+  debug: true
+  #当前环境，用以区分多环境，一般为 local, test, stage, production
+  mode: "local"
+  #时区
+  timezone: "Asia/Shanghai"
+jwt:
+  # 加密会话、JWT 加密
+  key: "zBqYyQrPNaIUsnRhsGtHLivjqiMjBVLS"
+  #过期时间，单位是分钟，一般不超过两个小时
+  expireTime: 86400
+  #允许刷新时间，单位分钟，86400 为两个月，从 Token 的签名时间算起
+  maxRefreshTime: 86400
+  #debug 模式下的过期时间，方便本地开发调试
+  debugExpireTime: 86400
+http:
+  app1:
+    #用户服务端口
+    port: "6001"
+log:
+  #日志级别，必须是以下这些选项：
+  #"debug" —— 信息量大，一般调试时打开。系统模块详细运行的日志，例如 HTTP 请求、数据库请求、发送邮件、发送短信
+  #"info" —— 业务级别的运行日志，如用户登录、用户退出、订单撤销。
+  #"warn" —— 感兴趣、需要引起关注的信息。 例如，调试时候打印调试信息（命令行输出会有高亮）。
+  #"error" —— 记录错误信息。Panic 或者 Error。如数据库连接错误、HTTP 端口被占用等。一般生产环境使用的等级。
+  #以上级别从低到高，level 值设置的级别越高，记录到日志的信息就越少
+  #开发时推荐使用 "debug" 或者 "info" ，生产环境下使用 "error"
+  level: "debug"
+  #每个日志文件保存的最大尺寸 单位：M
+  maxSize: 10
+  #最多保存日志文件数，0 为不限，MaxAge 到了还是会删
+  maxBackup: 0
+  #最多保存多少天，7 表示一周前的日志会被删除，0 表示不删
+  maxAge: 30
+  #日志路径
+  filePath: "./storage/log/"
+database:
+  connection: "mysql"
+  mysql:
+    host: "127.0.0.1"
+    port: "3306"
+    username: "root"
+    password: "root"
+    dbname: "test"
+    charset: "utf8mb4"
+    maxIdleConnections: 100
+    maxOpenConnections: 25
+    maxLifeSeconds: 300
+  postgres:
+    host: "127.0.0.1"
+    port: "3306"
+    username: ""
+    password: ""
+    dbname: ""
+redis:
+  host: "127.0.0.1"
+  port: "6379"
+  username: ""
+  password: ""
+  dbname: 0

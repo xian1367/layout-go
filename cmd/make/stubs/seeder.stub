@@ -1,0 +1,22 @@
+package seeder
+
+import (
+	"fmt"
+	"github.com/xian137/layout-go/database/factory"
+	"github.com/xian137/layout-go/pkg/console"
+	"github.com/xian137/layout-go/pkg/seed"
+	"gorm.io/gorm"
+)
+
+func init() {
+    seed.Add("Seed{{StructNamePlural}}Table", func(db *gorm.DB) {
+
+        {{VariableNamePlural}}  := factory.Make{{StructNamePlural}}(10)
+
+        result := db.Table("{{TableName}}").Create(&{{VariableNamePlural}})
+
+      	console.ExitIf(result.Error)
+
+        console.Success(fmt.Sprintf("Table [%v] %v rows seeded", result.Statement.Table, result.RowsAffected))
+    })
+}

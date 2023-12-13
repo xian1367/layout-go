@@ -1,0 +1,45 @@
+package {{PackageName}}
+
+import (
+	"github.com/xian137/layout-go/database/dao/gen"
+	"github.com/xian137/layout-go/database/model"
+	"github.com/xian137/layout-go/pkg/database"
+	"gorm.io/gorm"
+)
+
+const TableName = "{{TableName}}"
+
+func ({{StructName}}) TableName() string {
+	return TableName
+}
+
+type {{StructName}} struct {
+    model.BaseModel
+    gen.{{StructName}}
+}
+
+func ({{VariableName}} *{{StructName}}) Create(tx ...*gorm.DB) {
+    db := database.DB
+	if len(tx) > 0 {
+		db = tx[0]
+	}
+    db.Create(&{{VariableName}})
+}
+
+func ({{VariableName}} *{{StructName}}) Save(tx ...*gorm.DB) (rowsAffected int64) {
+    db := database.DB
+	if len(tx) > 0 {
+		db = tx[0]
+	}
+    result := db.Save(&{{VariableName}})
+    return result.RowsAffected
+}
+
+func ({{VariableName}} *{{StructName}}) Delete(tx ...*gorm.DB) (rowsAffected int64) {
+    db := database.DB
+	if len(tx) > 0 {
+		db = tx[0]
+	}
+    result := db.Delete(&{{VariableName}})
+    return result.RowsAffected
+}

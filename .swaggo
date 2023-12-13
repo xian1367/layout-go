@@ -1,0 +1,2 @@
+replace Carbon string
+replace gorm.DeletedAt string

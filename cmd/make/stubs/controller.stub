@@ -1,0 +1,135 @@
+package controller
+
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/xian137/layout-go/database/model/scope"
+	"github.com/xian137/layout-go/database/model/{{PackageName}}"
+	"github.com/xian137/layout-go/http/{{ServiceName}}/request"
+	"github.com/xian137/layout-go/pkg/gin/response"
+	"github.com/xian137/layout-go/pkg/validator"
+)
+
+type {{StructName}}Controller struct {
+    BaseAPIController
+}
+
+// Index 列表
+// @Summary 列表
+// @Description 列表
+// @Tags {{ServiceName}}.{{PackageName}}
+// @Accept */*
+// @Produce json
+// @Param payload query scope.Query true "payload"
+// @Success 200 {object} response.Paging{data=[]{{PackageName}}.{{StructName}},pager=scope.Paging}
+// @Failure 500 {object} response.Failure
+// @Router /{{PackageName}} [get]
+func (ctrl *{{StructName}}Controller) Index(c *gin.Context) {
+    var pager scope.Paging
+    var data []{{PackageName}}.{{StructName}}
+    data, pager = {{PackageName}}.Paginate(c)
+    response.Data(c, gin.H{
+        "data":  data,
+        "pager": pager,
+    })
+}
+
+// Show 详情
+// @Summary 详情
+// @Description 详情
+// @Tags {{ServiceName}}.{{PackageName}}
+// @Accept */*
+// @Produce json
+// @Param id path int true "ID"
+// @Success 200 {object} {{PackageName}}.{{StructName}}
+// @Failure 500 {object} response.Failure
+// @Router /{{PackageName}}/{id} [get]
+func (ctrl *{{StructName}}Controller) Show(c *gin.Context) {
+    {{VariableName}}Model := {{PackageName}}.Get(c.Param("id"))
+    if {{VariableName}}Model.ID == 0 {
+        response.Abort404(c)
+        return
+    }
+    response.Data(c, {{VariableName}}Model)
+}
+
+// Store 新增
+// @Summary 新增
+// @Description 新增
+// @Tags {{ServiceName}}.{{PackageName}}
+// @Accept json
+// @Produce json
+// @Param payload body request.{{StructName}}StoreRequest true "payload"
+// @Success 201 {object} {{PackageName}}.{{StructName}}
+// @Failure 500 {object} response.Failure
+// @Router /{{PackageName}} [post]
+func (ctrl *{{StructName}}Controller) Store(c *gin.Context) {
+    req := request.{{StructName}}StoreRequest{}
+    if ok := validator.Validate(c, &req); !ok {
+        return
+    }
+
+    {{VariableName}}Model := {{PackageName}}.{{StructName}}{}
+    {{VariableName}}Model.Create()
+    if {{VariableName}}Model.ID > 0 {
+        response.Created(c, {{VariableName}}Model)
+    } else {
+        response.Abort500(c, "创建失败，请稍后尝试~")
+    }
+}
+
+// Update 更新
+// @Summary 更新
+// @Description 更新
+// @Tags {{ServiceName}}.{{PackageName}}
+// @Accept json
+// @Produce json
+// @Param id path int true "ID"
+// @Param payload body request.{{StructName}}UpdateRequest true "payload"
+// @Success 200 {object} {{PackageName}}.{{StructName}}
+// @Failure 500 {object} response.Failure
+// @Router /{{PackageName}}/{id} [put]
+func (ctrl *{{StructName}}Controller) Update(c *gin.Context) {
+    req := request.{{StructName}}UpdateRequest{}
+    if ok := validator.Validate(c, &req); !ok {
+        return
+    }
+
+    {{VariableName}}Model := {{PackageName}}.Get(c.Param("id"))
+    if {{VariableName}}Model.ID == 0 {
+        response.Abort404(c)
+        return
+    }
+
+    rowsAffected := {{VariableName}}Model.Save()
+    if rowsAffected > 0 {
+        response.Data(c, {{VariableName}}Model)
+    } else {
+        response.Abort500(c, "更新失败，请稍后尝试~")
+    }
+}
+
+// Delete 删除
+// @Summary 删除
+// @Description 删除
+// @Tags {{ServiceName}}.{{PackageName}}
+// @Accept json
+// @Produce json
+// @Param id path int true "ID"
+// @Success 200 ""
+// @Failure 500 {object} response.Failure
+// @Router /{{PackageName}}/{id} [delete]
+func (ctrl *{{StructName}}Controller) Delete(c *gin.Context) {
+    {{VariableName}}Model := {{PackageName}}.Get(c.Param("id"))
+    if {{VariableName}}Model.ID == 0 {
+        response.Abort404(c)
+        return
+    }
+
+    rowsAffected := {{VariableName}}Model.Delete()
+    if rowsAffected > 0 {
+        response.Success(c)
+        return
+    }
+
+    response.Abort500(c, "删除失败，请稍后尝试~")
+}

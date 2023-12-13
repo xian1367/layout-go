@@ -1,0 +1,15 @@
+package request
+
+type {{StructName}}StoreRequest struct {
+	//Name string `form:"name" json:"name" binding:"required"`
+}
+
+func {{StructName}}Store(data interface{}) (errs map[string]string) {
+    return errs
+}
+
+type {{StructName}}UpdateRequest struct {}
+
+func {{StructName}}Update(data interface{}) (errs map[string]string) {
+	return errs
+}

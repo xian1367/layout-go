@@ -1,0 +1,18 @@
+package factory
+
+import (
+	"github.com/brianvoe/gofakeit/v6"
+	"github.com/xian137/layout-go/database/model/{{PackageName}}"
+)
+
+func Make{{StructNamePlural}}(count int) []{{PackageName}}.{{StructName}} {
+    var objs []{{PackageName}}.{{StructName}}
+
+    for i := 0; i < count; i++ {
+        {{VariableName}}Model := {{PackageName}}.{{StructName}}{}
+        gofakeit.Name()
+        objs = append(objs, {{VariableName}}Model)
+    }
+
+    return objs
+}
