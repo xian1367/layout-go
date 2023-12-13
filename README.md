@@ -1,3 +1,7 @@
+# layout-go
+
+Golang服务开发架构
+
 ## 目录结构
 
 ``` lua
