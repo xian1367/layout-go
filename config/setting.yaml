@@ -17,9 +17,11 @@ jwt:
   #debug 模式下的过期时间，方便本地开发调试
   debugExpireTime: 86400
 http:
-  app1:
+  - name: "api1"
     #用户服务端口
     port: "6001"
+    #opentelemetry收集器
+    openTelemetryCollectorUrl: ""
 log:
   #日志级别，必须是以下这些选项：
   #"debug" —— 信息量大，一般调试时打开。系统模块详细运行的日志，例如 HTTP 请求、数据库请求、发送邮件、发送短信

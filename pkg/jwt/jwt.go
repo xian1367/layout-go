@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	jwtPkg "github.com/golang-jwt/jwt/v5"
 	"github.com/golang-module/carbon/v2"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"strings"
 	"time"
 )

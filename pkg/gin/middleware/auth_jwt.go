@@ -4,8 +4,8 @@ package middleware
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/xian137/layout-go/pkg/gin/response"
-	"github.com/xian137/layout-go/pkg/jwt"
+	"github.com/xian1367/layout-go/pkg/gin/response"
+	"github.com/xian1367/layout-go/pkg/jwt"
 )
 
 func AuthJWT() gin.HandlerFunc {

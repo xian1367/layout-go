@@ -2,8 +2,8 @@
 package seed
 
 import (
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/database"
 	"gorm.io/gorm"
 )
 

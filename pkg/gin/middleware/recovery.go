@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/xian137/layout-go/pkg/gin/response"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/pkg/gin/response"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"go.uber.org/zap"
 	"net"
 	"net/http/httputil"

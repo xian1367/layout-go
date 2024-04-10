@@ -2,7 +2,7 @@ package make
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/pkg/database"
 	"gorm.io/gen"
 )
 
@@ -11,7 +11,8 @@ var CmdMakeGen = &cobra.Command{
 	Short: "Generate file and code, example: make gen",
 	Run: func(cmd *cobra.Command, args []string) {
 		g := gen.NewGenerator(gen.Config{
-			OutPath: "database/dao/query",
+			OutPath:      "database/dao/query",
+			ModelPkgPath: "model_gen",
 		})
 
 		g.UseDB(database.DB)

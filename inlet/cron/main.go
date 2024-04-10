@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/bootstrap"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/cron"
-	"github.com/xian137/layout-go/inlet"
-	"github.com/xian137/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/bootstrap"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/cron"
+	"github.com/xian1367/layout-go/inlet"
+	"github.com/xian1367/layout-go/pkg/console"
 	"os"
 )
 

@@ -1,8 +1,8 @@
 package migration
 
 import (
-	"github.com/xian137/layout-go/database/model"
-	"github.com/xian137/layout-go/pkg/migrate"
+	"github.com/xian1367/layout-go/database/model"
+	"github.com/xian1367/layout-go/pkg/migrate"
 )
 
 func init() {

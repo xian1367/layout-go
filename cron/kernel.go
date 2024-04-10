@@ -1,8 +1,8 @@
 package cron
 
 import (
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/timer"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/timer"
 )
 
 func Kernel() {

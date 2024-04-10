@@ -2,7 +2,7 @@
 package app
 
 import (
-	"github.com/xian137/layout-go/config"
+	"github.com/xian1367/layout-go/config"
 )
 
 func IsLocal() bool {

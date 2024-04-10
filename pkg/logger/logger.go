@@ -2,7 +2,7 @@ package logger
 
 import (
 	"fmt"
-	"github.com/xian137/layout-go/pkg/app"
+	"github.com/xian1367/layout-go/pkg/app"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -174,4 +174,8 @@ func Error(moduleName string, value interface{}) {
 
 func Fatal(moduleName, name string, value interface{}) {
 	Logger.Sugar().Fatalf(moduleName, value)
+}
+
+func ErrorName(moduleName string, name string, value interface{}) {
+	Logger.Error(moduleName, zap.Any(name, value))
 }

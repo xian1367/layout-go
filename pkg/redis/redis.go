@@ -3,8 +3,9 @@ package redis
 
 import (
 	"context"
+	"github.com/redis/go-redis/extra/redisotel/v9"
 	"github.com/redis/go-redis/v9"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"strconv"
 	"sync"
 	"time"
@@ -46,6 +47,15 @@ func NewClient(address string, username string, password string, db int) *Client
 		Password: password,
 		DB:       db,
 	})
+	// 开启 tracing instrumentation.
+	if err := redisotel.InstrumentTracing(rds.Client); err != nil {
+		panic(err)
+	}
+
+	// 开启 metrics instrumentation.
+	if err := redisotel.InstrumentMetrics(rds.Client); err != nil {
+		panic(err)
+	}
 	return rds
 }
 
@@ -60,12 +70,54 @@ func Shutdown() {
 	logger.ErrorIf(err)
 }
 
+// Set 存储 key 对应的 value，且设置 expiration 过期时间
+func (rds Client) Set(key string, value interface{}, expiration time.Duration) bool {
+	if err := rds.Client.Set(rds.Context, key, value, expiration).Err(); err != nil {
+		logger.ErrorName("Redis", "Set", err.Error())
+		return false
+	}
+	return true
+}
+
+// Get 获取 key 对应的 value
+func (rds Client) Get(key string) string {
+	result, err := rds.Client.Get(rds.Context, key).Result()
+	if err != nil {
+		if err != redis.Nil {
+			logger.ErrorName("Redis", "Get", err.Error())
+		}
+		return ""
+	}
+	return result
+}
+
+// Has 判断一个 key 是否存在，内部错误和 redis.Nil 都返回 false
+func (rds Client) Has(key string) bool {
+	_, err := rds.Client.Get(rds.Context, key).Result()
+	if err != nil {
+		if err != redis.Nil {
+			logger.ErrorName("Redis", "Has", err.Error())
+		}
+		return false
+	}
+	return true
+}
+
+// Del 删除存储在 redis 里的数据，支持多个 key 传参
+func (rds Client) Del(keys ...string) bool {
+	if err := rds.Client.Del(rds.Context, keys...).Err(); err != nil {
+		logger.ErrorName("Redis", "Del", err.Error())
+		return false
+	}
+	return true
+}
+
 // MultiIncr 事务自增
-func MultiIncr(key string, expiration int64) string {
-	pipe := Redis.Client.TxPipeline()
-	incr := pipe.Incr(Redis.Context, key)
-	pipe.Expire(Redis.Context, key, time.Duration(expiration)*time.Second)
-	_, err := pipe.Exec(Redis.Context)
+func (rds Client) MultiIncr(key string, expiration int64) string {
+	pipe := rds.Client.TxPipeline()
+	incr := pipe.Incr(rds.Context, key)
+	pipe.Expire(rds.Context, key, time.Duration(expiration)*time.Second)
+	_, err := pipe.Exec(rds.Context)
 	if err != nil {
 		return ""
 	}

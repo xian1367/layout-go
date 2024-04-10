@@ -8,8 +8,8 @@ import (
 
 	"github.com/iancoleman/strcase"
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/pkg/app"
-	"github.com/xian137/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/app"
+	"github.com/xian1367/layout-go/pkg/console"
 )
 
 // Model 参数解释

@@ -4,9 +4,9 @@ package database
 import (
 	"database/sql"
 	"errors"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"gorm.io/gorm"
 	gormLogger "gorm.io/gorm/logger"
 )

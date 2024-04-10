@@ -3,11 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/bootstrap"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/http/api1"
-	"github.com/xian137/layout-go/inlet"
-	"github.com/xian137/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/bootstrap"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/http"
+	"github.com/xian1367/layout-go/http/api1/route"
+	"github.com/xian1367/layout-go/inlet"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/gin"
 	"os"
 )
 
@@ -43,7 +45,7 @@ func main() {
 			config.InitTime()
 
 			// 定义端口
-			api1.SetPort(config.Get().Http.App1.Port)
+			http.SetPort(config.Get().Http[0].Port)
 
 			// 初始化 定时器
 			bootstrap.SetupTimer()
@@ -62,13 +64,14 @@ func main() {
 		},
 	}
 
+	gin.Routers = route.Routes{}
 	// 注册子命令
 	rootCmd.AddCommand(
-		api1.ServerCmd,
+		http.ServerCmd,
 	)
 
 	// 配置默认运行 Web 服务
-	inlet.RegisterDefaultCmd(rootCmd, api1.ServerCmd)
+	inlet.RegisterDefaultCmd(rootCmd, http.ServerCmd)
 
 	// 注册全局参数，--config
 	inlet.RegisterGlobalFlags(rootCmd)

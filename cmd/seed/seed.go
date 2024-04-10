@@ -1,9 +1,9 @@
 package seed
 
 import (
-	"github.com/xian137/layout-go/database/seeder"
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/seed"
+	"github.com/xian1367/layout-go/database/seeder"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/seed"
 
 	"github.com/spf13/cobra"
 )

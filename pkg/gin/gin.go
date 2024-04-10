@@ -5,10 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/xian137/layout-go/docs"
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/gin/middleware"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/docs"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/gin/middleware"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"net/http"
 	"time"
 )
@@ -16,6 +16,12 @@ import (
 var Engine *gin.Engine
 
 var Server *http.Server
+
+var Routers Router
+
+type Router interface {
+	RegisterRoutes()
+}
 
 func InitGin() {
 	// 设置 gin 的运行模式，支持 debug, release, test
@@ -56,6 +62,7 @@ func registerGlobalMiddleWare() {
 		middleware.ForceUA(),
 		middleware.Response(),
 		middleware.Cors(),
+		middleware.OpenTelemetry(),
 	)
 }
 

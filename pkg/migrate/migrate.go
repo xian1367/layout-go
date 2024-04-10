@@ -4,10 +4,10 @@ package migrate
 import (
 	"os"
 
-	"github.com/xian137/layout-go/pkg/app"
-	"github.com/xian137/layout-go/pkg/console"
-	"github.com/xian137/layout-go/pkg/database"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/pkg/app"
+	"github.com/xian1367/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"gorm.io/gorm"
 )
 

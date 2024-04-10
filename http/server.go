@@ -1,14 +1,13 @@
-package api1
+package http
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/http/api1/route"
-	"github.com/xian137/layout-go/pkg/app"
-	"github.com/xian137/layout-go/pkg/database"
-	"github.com/xian137/layout-go/pkg/gin"
-	"github.com/xian137/layout-go/pkg/redis"
-	"github.com/xian137/layout-go/pkg/shutdown"
-	"github.com/xian137/layout-go/pkg/timer"
+	"github.com/xian1367/layout-go/pkg/app"
+	"github.com/xian1367/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/pkg/gin"
+	"github.com/xian1367/layout-go/pkg/redis"
+	"github.com/xian1367/layout-go/pkg/shutdown"
+	"github.com/xian1367/layout-go/pkg/timer"
 )
 
 // ServerCmd represents the available web sub-command.
@@ -29,7 +28,7 @@ func runWeb(cmd *cobra.Command, args []string) {
 	gin.InitGin()
 
 	//  注册 API 路由
-	route.RegisterRoutes(gin.Engine)
+	gin.Routers.RegisterRoutes()
 
 	// Api文档
 	if !app.IsProduction() {

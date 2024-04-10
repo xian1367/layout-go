@@ -4,7 +4,7 @@ package middleware
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
-	"github.com/xian137/layout-go/pkg/gin/response"
+	"github.com/xian1367/layout-go/pkg/gin/response"
 )
 
 // ForceUA 中间件，强制请求必须附带 User-Agent 标头

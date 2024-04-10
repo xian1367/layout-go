@@ -2,8 +2,8 @@ package migrate
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/database/migration"
-	"github.com/xian137/layout-go/pkg/migrate"
+	"github.com/xian1367/layout-go/database/migration"
+	"github.com/xian1367/layout-go/pkg/migrate"
 )
 
 var CmdMigrate = &cobra.Command{

@@ -1,9 +1,9 @@
 package user
 
 import (
-	"github.com/xian137/layout-go/database/dao/gen"
-	"github.com/xian137/layout-go/database/model"
-	"github.com/xian137/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/database/dao/model_gen"
+	"github.com/xian1367/layout-go/database/model"
+	"github.com/xian1367/layout-go/pkg/database"
 	"gorm.io/gorm"
 )
 
@@ -15,7 +15,7 @@ func (User) TableName() string {
 
 type User struct {
 	model.BaseModel
-	gen.User
+	model_gen.User
 }
 
 func (user *User) Create(tx ...*gorm.DB) {

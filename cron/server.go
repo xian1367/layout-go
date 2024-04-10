@@ -2,8 +2,8 @@ package cron
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/pkg/shutdown"
-	"github.com/xian137/layout-go/pkg/timer"
+	"github.com/xian1367/layout-go/pkg/shutdown"
+	"github.com/xian1367/layout-go/pkg/timer"
 )
 
 // CmdCron represents the available web sub-command.

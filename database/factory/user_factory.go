@@ -2,7 +2,7 @@ package factory
 
 import (
 	"github.com/brianvoe/gofakeit/v6"
-	"github.com/xian137/layout-go/database/model/user"
+	"github.com/xian1367/layout-go/database/model/user"
 )
 
 func MakeUsers(count int) []user.User {

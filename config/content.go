@@ -5,7 +5,7 @@ var config = new(Config)
 type Config struct {
 	App      App      `yaml:"app"`
 	Jwt      Jwt      `yaml:"jwt"`
-	Http     Http     `yaml:"http"`
+	Http     []Http   `yaml:"http"`
 	Log      Log      `yaml:"log"`
 	Redis    Redis    `yaml:"redis"`
 	Database Database `yaml:"database"`
@@ -26,9 +26,9 @@ type Jwt struct {
 }
 
 type Http struct {
-	App1 struct {
-		Port string `yaml:"port"`
-	} `yaml:"app1"`
+	Name                      string `yaml:"name"`
+	Port                      string `yaml:"port"`
+	OpenTelemetryCollectorUrl string `yaml:"openTelemetryCollectorUrl"`
 }
 
 type Log struct {

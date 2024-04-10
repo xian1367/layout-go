@@ -1,9 +1,9 @@
 package bootstrap
 
 import (
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/pkg/logger"
-	"github.com/xian137/layout-go/pkg/timer"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/pkg/timer"
 )
 
 // SetupLogger 初始化 Logger

@@ -3,8 +3,8 @@ package controller
 import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/gin-gonic/gin"
-	"github.com/xian137/layout-go/pkg/gin/response"
-	"github.com/xian137/layout-go/pkg/jwt"
+	"github.com/xian1367/layout-go/pkg/gin/response"
+	"github.com/xian1367/layout-go/pkg/jwt"
 )
 
 type TestController struct {

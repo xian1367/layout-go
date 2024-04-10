@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/xian137/layout-go/bootstrap"
-	"github.com/xian137/layout-go/cmd/make"
-	"github.com/xian137/layout-go/cmd/migrate"
-	"github.com/xian137/layout-go/cmd/seed"
-	"github.com/xian137/layout-go/cmd/service"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/inlet"
-	"github.com/xian137/layout-go/pkg/console"
+	"github.com/xian1367/layout-go/bootstrap"
+	"github.com/xian1367/layout-go/cmd/make"
+	"github.com/xian1367/layout-go/cmd/migrate"
+	"github.com/xian1367/layout-go/cmd/seed"
+	"github.com/xian1367/layout-go/cmd/service"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/inlet"
+	"github.com/xian1367/layout-go/pkg/console"
 	"os"
 )
 

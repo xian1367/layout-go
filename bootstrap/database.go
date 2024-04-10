@@ -3,9 +3,9 @@ package bootstrap
 import (
 	"errors"
 	"fmt"
-	"github.com/xian137/layout-go/config"
-	"github.com/xian137/layout-go/pkg/database"
-	"github.com/xian137/layout-go/pkg/logger"
+	"github.com/xian1367/layout-go/config"
+	"github.com/xian1367/layout-go/pkg/database"
+	"github.com/xian1367/layout-go/pkg/logger"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
