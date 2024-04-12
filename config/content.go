@@ -26,9 +26,9 @@ type Jwt struct {
 }
 
 type Http struct {
-	Name                      string `yaml:"name"`
-	Port                      string `yaml:"port"`
-	OpenTelemetryCollectorUrl string `yaml:"openTelemetryCollectorUrl"`
+	Name              string `yaml:"name"`
+	Port              string `yaml:"port"`
+	TelemetryEndpoint string `yaml:"telemetryEndpoint"`
 }
 
 type Log struct {

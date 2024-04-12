@@ -18,7 +18,7 @@ import (
 // * 1000 reqs/hour: "1000-H"
 // * 2000 reqs/day: "2000-D"
 func LimitIP(param string) gin.HandlerFunc {
-	if app.IsTesting() {
+	if app.IsDebug() {
 		param = "1000000-H"
 	}
 
@@ -34,7 +34,7 @@ func LimitIP(param string) gin.HandlerFunc {
 
 // LimitPerRoute 限流中间件，用在单独的路由中
 func LimitPerRoute(param string) gin.HandlerFunc {
-	if app.IsTesting() {
+	if app.IsDebug() {
 		param = "1000000-H"
 	}
 	return func(c *gin.Context) {

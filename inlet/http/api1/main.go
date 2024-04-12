@@ -59,12 +59,16 @@ func main() {
 			// 初始化 Redis
 			bootstrap.SetupRedis()
 
+			//初始化 链路追踪
+			bootstrap.SetupTracer()
+
 			// UI-Log
 			bootstrap.UI()
 		},
 	}
 
 	gin.Routers = route.Routes{}
+
 	// 注册子命令
 	rootCmd.AddCommand(
 		http.ServerCmd,

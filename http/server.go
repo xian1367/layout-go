@@ -8,6 +8,7 @@ import (
 	"github.com/xian1367/layout-go/pkg/redis"
 	"github.com/xian1367/layout-go/pkg/shutdown"
 	"github.com/xian1367/layout-go/pkg/timer"
+	"github.com/xian1367/layout-go/pkg/tracer"
 )
 
 // ServerCmd represents the available web sub-command.
@@ -60,6 +61,11 @@ func runWeb(cmd *cobra.Command, args []string) {
 		// 关闭 redis
 		func() {
 			redis.Shutdown()
+		},
+
+		// 关闭 tracer
+		func() {
+			tracer.Shutdown()
 		},
 	)
 }

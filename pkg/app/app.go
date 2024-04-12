@@ -9,7 +9,11 @@ func IsLocal() bool {
 	return config.Get().App.Mode == "local"
 }
 
-func IsTesting() bool {
+func IsDev() bool {
+	return config.Get().App.Mode == "dev"
+}
+
+func IsTest() bool {
 	return config.Get().App.Mode == "test"
 }
 

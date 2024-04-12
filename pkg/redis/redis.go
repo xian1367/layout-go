@@ -47,7 +47,7 @@ func NewClient(address string, username string, password string, db int) *Client
 		Password: password,
 		DB:       db,
 	})
-	// 开启 tracing instrumentation.
+	// 开启 tracer instrumentation.
 	if err := redisotel.InstrumentTracing(rds.Client); err != nil {
 		panic(err)
 	}
